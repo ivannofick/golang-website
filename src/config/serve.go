@@ -10,7 +10,7 @@ import (
 func MainRun() {
 	http.Handle("/static/",
 		http.StripPrefix("/static/",
-			http.FileServer(http.Dir("assets"))))
+			http.FileServer(http.Dir("Assets"))))
 	http.HandleFunc("/", handlerIndex)
 
 	fmt.Println("Server Has Been Activated") // untuk mencetak apakah server sudah aktif
