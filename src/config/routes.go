@@ -3,11 +3,13 @@ package config
 import (
 	"fmt"
 	dashboard "golang-web-system/modules/dashboard/controller"
+	profile "golang-web-system/modules/profile/controller"
 	"net/http"
 )
 
 func HandlerRoutes() {
 	http.HandleFunc("/", dashboard.IndexDashboard)
+	http.HandleFunc("/profile", profile.IndexProfile)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("assets"))))
 	handlerServe()
 }
