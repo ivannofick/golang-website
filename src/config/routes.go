@@ -8,7 +8,7 @@ import (
 func HandlerRoutes() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("assets"))))
 	http.HandleFunc("/", HandlerIndex)
-	http.HandleFunc("/product", HandlerProductDetail)
+	http.HandleFunc("/product", HandlerProduct)
 	handlerServe()
 }
 

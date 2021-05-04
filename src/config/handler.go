@@ -13,8 +13,7 @@ func HandlerIndex(writer http.ResponseWriter, r *http.Request) {
 		http.NotFound(writer, r)
 		return
 	}
-	var filePath = path.Join("view", "index.html") // folder tidak boleh huruf besar...!
-	var tmpl, err = template.ParseFiles(filePath)
+	var tmpl, err = template.ParseFiles(path.Join("view", "index.html"), path.Join("view", "default-Layout.html"))
 	if err != nil {
 		http.Error(writer, err.Error(), http.StatusInternalServerError)
 		return
@@ -47,15 +46,14 @@ func HandlerProductDetail(writer http.ResponseWriter, r *http.Request) {
 }
 
 func HandlerProduct(writer http.ResponseWriter, r *http.Request) {
-	var filePath = path.Join("view", "index.html") // folder tidak boleh huruf besar...!
-	var tmpl, err = template.ParseFiles(filePath)
+	var tmpl, err = template.ParseFiles(path.Join("view", "index.html"), path.Join("view", "default-Layout.html"))
 	if err != nil {
 		http.Error(writer, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	var data = map[string]interface{}{
-		"title": "Website Golang",
+		"title": "Product Golang",
 		"name":  "saya",
 	}
 

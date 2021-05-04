@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ .title }}</title>
-        <link type='text/css' rel="stylesheet" href="/static/bootstrap-4.6.0/css/bootstrap.css" />
-    </head>
-    <body>
-        <p>Wellcome {{ .name }}</p>
-        <button class="btn btn-danger">{{ .name }}</button>
-    </body>
-</html>
+{{ template "Layout" .}}
+{{ define "main" }}
+<div class="row">
+    <div class="col-md-12">
+        {{ .title }}
+    </div>
+</div>
+{{ end }}
