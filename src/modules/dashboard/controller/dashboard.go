@@ -1,18 +1,19 @@
-package config
+package modules
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"path"
 )
 
-func SetTemplate(writer http.ResponseWriter, r *http.Request) {
+func IndexDashboard(writer http.ResponseWriter, r *http.Request) {
+	fmt.Println("masuk sini")
 	if r.URL.Path != "/" { // ini untuk cek, jika path / url gak ditemukan
 		http.NotFound(writer, r)
 		return
 	}
-	var filePath = path.Join("view", "index.html") // folder tidak boleh huruf besar...!
-	var tmpl, err = template.ParseFiles(filePath)
+	var tmpl, err = template.ParseFiles(path.Join("view", "index.html"), path.Join("view", "default-Layout.html"))
 	if err != nil {
 		http.Error(writer, err.Error(), http.StatusInternalServerError)
 		return
@@ -25,6 +26,7 @@ func SetTemplate(writer http.ResponseWriter, r *http.Request) {
 
 	err = tmpl.Execute(writer, data)
 	if err != nil {
-		InternalServerError(writer)
+		http.Error(writer, err.Error(), http.StatusInternalServerError)
+		return
 	}
 }
