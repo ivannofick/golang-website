@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	config.MainRun()
+	config.HandlerRoutes()
 }
