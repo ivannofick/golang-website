@@ -8,8 +8,6 @@ import (
 
 func HandlerRoutes() {
 	http.HandleFunc("/", dashboard.IndexDashboard)
-	// http.HandleFunc("/", dashboard.IndexDashboard)
-	http.HandleFunc("/product", HandlerProduct)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("assets"))))
 	handlerServe()
 }
